@@ -39,18 +39,6 @@ You walk over to the standing desk you bought on recommendation of
 someone at a hackathon, and stand at it. Wouldn't want to wrinkle your
 $100 pair of jeans by sitting down, right?
 
-A poster on the wall reminds you to check your privileges
-(please check all that apply to you and submit a pull request).
-
-- [ ] White
-- [ ] Male
-- [ ] Cis
-- [ ] Straight
-- [ ] Thin (or fit)
-- [ ] Able-bodied
-
-The list goes on, stretching below the desk, and down to the floor.
-
 Your open your *GitHub* news feed. A new project by Tox catches your eye.
 
 ### 3. `yuu-lite`
