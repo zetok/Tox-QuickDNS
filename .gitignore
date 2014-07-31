@@ -1,0 +1,12 @@
+bin/
+include/
+lib/
+share/
+
+.DS_Store
+.Python
+config.json
+names.json
+
+__pycache__
+key
