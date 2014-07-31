@@ -93,7 +93,7 @@ Paste the following into config.json; tweak as needed.
 {
     "pid_file": "pidfile.dl", 
     "dns_record_ttl": 60, # TTL only applies to tox1 lookups.
-    "dns_authority_name": "some.domain.example.com", # Should resolve to the server you're running yuu-lite on.
+    "hostname": "some.domain.example.com", # Should resolve to the server you're running yuu-lite on.
     "dns_listen_addr": "",
     "dns_listen_port": 53,
     "suid": "stal:nogroup" # user:group chmod syntax
