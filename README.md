@@ -48,7 +48,7 @@ make it impossibly easy to start serving your Tox ID from your personal
 domain(s).
 
 The key advantage of using yuu-lite over static records is that it
-supports tox3 encrypted lookup.
+supports toxdns3 encrypted lookup.
 
 **Dependencies**:
 
@@ -80,7 +80,7 @@ Paste the following into config.json; tweak as needed.
 ```
 {
     "pid_file": "pidfile.dl", 
-    "dns_record_ttl": 60, # TTL only applies to tox1 lookups.
+    "dns_record_ttl": 60, # TTL only applies to toxdns1 lookups.
     "hostname": "some.domain.example.com", # Should resolve to the server you're running yuu-lite on.
     "dns_listen_addr": "",
     "dns_listen_port": 53,
@@ -103,4 +103,4 @@ Use the following format in names.json.
 ```
 
 Finished. That didn't take long, did it? To test, compile uTox with your
-tox3 key and try the names you added above.
+toxdns3 key and try the names you added above.

@@ -106,9 +106,9 @@ class ToxResolver(dnslib.server.BaseResolver):
                     rdata=dnslib.TXT(self.cryptocore.public_key.encode("ascii"))))
                 return reply
 
-            first_try = self.try_tox3_resolve(reply, name, domain, req_name)
+            first_try = self.try_toxdns3_resolve(reply, name, domain, req_name)
             if not first_try:
-                return self.try_tox1_resolve(reply, name, domain, req_name)
+                return self.try_toxdns1_resolve(reply, name, domain, req_name)
             else:
                 return first_try
         elif question.qtype == 2:
@@ -121,7 +121,7 @@ class ToxResolver(dnslib.server.BaseResolver):
             return reply
         return reply
 
-    def try_tox3_resolve(self, reply, name, domain, req_name):
+    def try_toxdns3_resolve(self, reply, name, domain, req_name):
         if not name.startswith("_"):
             return None
 
@@ -149,18 +149,18 @@ class ToxResolver(dnslib.server.BaseResolver):
         ct = self.cryptocore.dsrec_encrypt_key(ck, nonce_reply, msg)
         key_part = notsecure32_encode(ct).decode("ascii")
 
-        base = "v=tox3;id={0}".format(key_part).encode("utf8")
+        base = "v=toxdns3;id={0}".format(key_part).encode("utf8")
         reply.add_answer(dnslib.RR(req_name, 16, ttl=0,
                          rdata=dnslib.TXT(base)))
         return reply
 
-    def try_tox1_resolve(self, reply, name, domain, req_name):
+    def try_toxdns1_resolve(self, reply, name, domain, req_name):
         toxid = self.names.get("{0}@{1}".format(name, domain))
         if not toxid:
             reply.header.rcode = dnslib.RCODE.NXDOMAIN
             return reply
         else:
-            rec = "v=tox1;id={0}".format(toxid).encode("utf8")
+            rec = "v=toxdns1;id={0}".format(toxid).encode("utf8")
             reply.add_answer(dnslib.RR(req_name, 16, ttl=self.ttl,
                                        rdata=dnslib.TXT(rec)))
             return reply
@@ -178,7 +178,7 @@ def main():
 
     cc = cryptocore.CryptoCore()
     print("Hi.")
-    print("My tox3 public key is {0}.".format(cc.public_key))
+    print("My toxdns3 public key is {0}.".format(cc.public_key))
 
     if "pid_file" in cfg:
         with open(cfg["pid_file"], "w") as pid:
